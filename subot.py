@@ -97,6 +97,14 @@ def slack_events():
 
     return jsonify({'status': 'ok'}), 200
 
+@app.route('/slack/wisdom', methods=['POST'])
+def wisdom():
+    reactions = load_quotes()
+    print(reactions)
+    json_payload = request.json
+    print(json_payload)
+    return jsonify({'status':''})
+
 @app.route('/')
 def index():
     return 'Subot is running!'
@@ -135,6 +143,6 @@ def delete_quote(reaction_id):
     db.execute('DELETE FROM subot_quotes WHERE REACTION_ID = ?;', (reaction_id,))
     db.commit()
     return jsonify({'status': 'ok'}), 200
-
+    
 if __name__ == '__main__':
     app.run(port=3000, debug=True)
