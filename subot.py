@@ -103,7 +103,15 @@ def wisdom():
     print(reactions)
     json_payload = request.json
     print(json_payload)
-    return jsonify({'status':''})
+    return jsonify({'status':'ok'})
+
+@app.route('/slack/callback', methods=['POST'])
+def wisdom():
+    # reactions = load_quotes()
+    # print(reactions)
+    json_payload = request.json
+    print(json_payload)
+    return jsonify({'status':'ok'})
 
 @app.route('/')
 def index():
