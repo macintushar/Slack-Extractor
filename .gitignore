@@ -4,5 +4,7 @@ venv/
 env/
 ENV/
 
+*.json
+
 __pycache__/
 
